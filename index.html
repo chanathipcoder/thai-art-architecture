@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ศิลปะลายรดน้ำและสถาปัตยกรรมไทย | Thai Lacquer Art & Traditional Architecture</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Fonts: Charmonman, Charm, Prompt, Sarabun, Cinzel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Charmonman:wght@400;700&family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;900&family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="thai-body-bg text-[#3B2C1E] font-['Prompt'] antialiased selection:bg-[#D4AF37] selection:text-[#FFFFFF] overflow-x-hidden">
+
+  <!-- 1. NAVIGATION BAR -->
+  <nav class="fixed top-0 left-0 w-full z-50 bg-[#FAF5EB]/90 backdrop-blur-md border-b-2 border-[#D4AF37]/80 shadow-[0_4px_20px_rgba(212,175,55,0.15)] transition-all duration-300" id="mainNav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo -->
+      <a href="#home" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-full border-2 border-[#D4AF37] flex items-center justify-center bg-gradient-to-br from-[#8B1E1E] to-[#5C1414] shadow-[0_0_15px_rgba(212,175,55,0.4)] group-hover:rotate-12 transition duration-500">
+          <span class="text-xl text-[#FFD700]">⚜️</span>
+        </div>
+        <div>
+          <div class="font-['Charmonman'] text-lg md:text-xl font-bold text-[#8B1E1E] leading-none tracking-wide group-hover:text-[#B8860B] transition">
+            ลายรดน้ำ & สถาปัตยกรรมไทย
+          </div>
+          <div class="font-['Cinzel'] text-[10px] text-[#1B4D3E] font-bold tracking-[0.25em] uppercase">
+            Thai Lacquer Art & Architecture
+          </div>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <div class="hidden md:flex items-center gap-6 text-sm font-semibold tracking-wide text-[#3B2C1E]">
+        <a href="#home" class="nav-link hover:text-[#8B1E1E] transition">หน้าแรก</a>
+        <a href="#about-lacquer" class="nav-link hover:text-[#8B1E1E] transition">ลายรดน้ำ</a>
+        <a href="#process-timeline" class="nav-link hover:text-[#8B1E1E] transition">ขั้นตอนการสร้าง</a>
+        <a href="#motifs" class="nav-link hover:text-[#8B1E1E] transition">ลวดลายสำคัญ</a>
+        <a href="#architecture" class="nav-link hover:text-[#8B1E1E] transition">สถาปัตยกรรมไทย</a>
+        <a href="#gallery" class="nav-link hover:text-[#8B1E1E] transition">แกลเลอรี</a>
+        <a href="#references" class="text-xs px-4 py-1.5 rounded-full border-2 border-[#8B1E1E] text-[#8B1E1E] hover:bg-[#8B1E1E] hover:text-white transition font-bold shadow-sm">อ้างอิง</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-[#8B1E1E] focus:outline-none" aria-label="Toggle Menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden md:hidden bg-[#FAF5EB] border-b-2 border-[#D4AF37] px-6 py-5 space-y-3 shadow-xl">
+      <a href="#home" onclick="toggleMobileMenu()" class="block py-1 font-bold text-[#8B1E1E]">หน้าแรก</a>
+      <a href="#about-lacquer" onclick="toggleMobileMenu()" class="block py-1 hover:text-[#8B1E1E]">ลายรดน้ำ</a>
+      <a href="#process-timeline" onclick="toggleMobileMenu()" class="block py-1 hover:text-[#8B1E1E]">ขั้นตอนการสร้าง</a>
+      <a href="#motifs" onclick="toggleMobileMenu()" class="block py-1 hover:text-[#8B1E1E]">ลวดลายสำคัญ</a>
+      <a href="#architecture" onclick="toggleMobileMenu()" class="block py-1 hover:text-[#8B1E1E]">สถาปัตยกรรมไทย</a>
+      <a href="#gallery" onclick="toggleMobileMenu()" class="block py-1 hover:text-[#8B1E1E]">แกลเลอรี</a>
+      <a href="#references" onclick="toggleMobileMenu()" class="block py-1 text-xs text-[#1B4D3E] font-bold">แหล่งข้อมูลอ้างอิง</a>
+    </div>
+  </nav>
+
+  <!-- 2. HERO SECTION -->
+  <section id="home" class="relative min-h-screen flex items-center justify-center pt-28 pb-16 px-4 overflow-hidden">
+    
+    <!-- Decorative Golden Aura Glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-gradient-to-br from-[#FFF3D1]/80 via-[#F7E7C4]/40 to-transparent rounded-full blur-[90px] pointer-events-none"></div>
+
+    <div class="max-w-5xl mx-auto text-center relative z-10 space-y-6">
+      
+      <!-- Royal Badge -->
+      <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full border-2 border-[#D4AF37] bg-white/95 text-xs tracking-[0.2em] text-[#8B1E1E] uppercase font-['Cinzel'] font-bold shadow-[0_4px_15px_rgba(212,175,55,0.25)] backdrop-blur-sm">
+        <span class="text-[#D4AF37]">✦</span> ประณีตศิลป์ไทย & สถาปัตยกรรมหลวง <span class="text-[#D4AF37]">✦</span>
+      </div>
+
+      <!-- Main Headline with Luxury Fonts -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-bold leading-[1.3] text-center">
+        <span class="thai-ruby-text font-['Charmonman'] block tracking-tight">มรดกแห่งเส้นสาย</span>
+        <span class="thai-gold-text font-['Charmonman'] block text-5xl sm:text-7xl md:text-8xl font-bold mt-1">สีทอง และศรัทธา</span>
+      </h1>
+
+      <!-- Description in Parchment Card -->
+      <div class="max-w-3xl mx-auto parchment-card p-6 rounded-2xl border-2 border-[#D4AF37]/60 shadow-lg text-center relative">
+        <p class="text-sm sm:text-base text-[#4A3B2C] leading-relaxed font-['Sarabun'] font-normal">
+          สำรวจความงดงามของ <strong>ศิลปะลายรดน้ำ</strong> บนพื้นรักสีดำขลับ และ <strong>สถาปัตยกรรมไทยแบบประเพณี</strong> งานศิลป์อันทรงคุณค่าที่สะท้อนภูมิปัญญา ความเชื่อ และฝีมือเชิงช่างของช่างสิบหมู่ไทยจากอดีตจนถึงปัจจุบัน
+        </p>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+        <a href="#about-lacquer" class="btn-royal-gold px-7 py-3 rounded-xl text-sm font-bold tracking-wider text-[#3B2C1E] shadow-lg flex items-center gap-2">
+          <span>⚜️</span> สำรวจศิลปะลายรดน้ำ
+        </a>
+        <a href="#architecture" class="btn-royal-red px-7 py-3 rounded-xl text-sm font-bold tracking-wider text-white shadow-lg flex items-center gap-2">
+          <span>🏛️</span> สถาปัตยกรรมไทย
+        </a>
+        <a href="#gallery" class="btn-royal-green px-7 py-3 rounded-xl text-sm font-bold tracking-wider text-white shadow-lg flex items-center gap-2">
+          <span>🖼️</span> ชมแกลเลอรี
+        </a>
+      </div>
+
+      <!-- Two Highlight Pillar Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-8 text-left">
+        
+        <!-- Card 1: ศิลปะลายรดน้ำ -->
+        <a href="#about-lacquer" class="group rounded-2xl bg-white border-2 border-[#D4AF37] hover:border-[#8B1E1E] transition duration-500 shadow-xl overflow-hidden flex flex-col justify-between relative">
+          <div class="h-52 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1598605272254-16f0c0ecdfa5?auto=format&fit=crop&w=800&q=80" alt="Lai Rod Nam" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 bg-[#8B1E1E] text-white text-[10px] font-['Cinzel'] font-bold px-3 py-1 rounded-full shadow border border-[#FFD700]">
+              LAI ROD NAM
+            </span>
+          </div>
+          <div class="p-6 space-y-2 bg-gradient-to-b from-white to-[#FDF8EC]">
+            <h3 class="text-xl font-bold font-['Charmonman'] text-[#8B1E1E] group-hover:text-[#B8860B] transition">
+              ศิลปะลายรดน้ำ (Lai Rod Nam)
+            </h3>
+            <p class="text-xs text-[#5C4A38] leading-relaxed font-['Sarabun'] font-medium">
+              เรียนรู้กรรมวิธีการสร้างลวดลายทองคำเปลวบริสุทธิ์บนพื้นรักสีดำ ด้วยเทคนิคการเขียนน้ำยาหรดาล ปิดทอง และรดน้ำล้างลายอันน่าอัศจรรย์
+            </p>
+            <div class="pt-2 flex items-center gap-1.5 text-xs text-[#8B1E1E] font-bold">
+              <span>อ่านต่อ</span> <span class="group-hover:translate-x-1.5 transition">→</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 2: สถาปัตยกรรมไทย -->
+        <a href="#architecture" class="group rounded-2xl bg-white border-2 border-[#D4AF37] hover:border-[#1B4D3E] transition duration-500 shadow-xl overflow-hidden flex flex-col justify-between relative">
+          <div class="h-52 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=800&q=80" alt="Architecture" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 bg-[#1B4D3E] text-white text-[10px] font-['Cinzel'] font-bold px-3 py-1 rounded-full shadow border border-[#FFD700]">
+              ARCHITECTURE
+            </span>
+          </div>
+          <div class="p-6 space-y-2 bg-gradient-to-b from-white to-[#FDF8EC]">
+            <h3 class="text-xl font-bold font-['Charmonman'] text-[#1B4D3E] group-hover:text-[#B8860B] transition">
+              สถาปัตยกรรมไทย (Architecture)
+            </h3>
+            <p class="text-xs text-[#5C4A38] leading-relaxed font-['Sarabun'] font-medium">
+              สำรวจองค์ประกอบวิหารและอุโบสถไทย ตั้งแต่โครงสร้างหลังคาซ้อนชั้น หน้าบันแกะสลักปิดทอง จนถึง <strong>เครื่องลำยอง</strong> (ช่อฟ้า ใบระกา หางหงส์)
+            </p>
+            <div class="pt-2 flex items-center gap-1.5 text-xs text-[#1B4D3E] font-bold">
+              <span>อ่านต่อ</span> <span class="group-hover:translate-x-1.5 transition">→</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 3. SECTION: ศิลปะลายรดน้ำ -->
+  <section id="about-lacquer" class="py-24 px-4 max-w-7xl mx-auto border-t-2 border-[#D4AF37]/30">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Text Description -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="inline-flex items-center gap-2 text-xs font-['Cinzel'] font-bold tracking-widest text-[#1B4D3E] uppercase bg-[#EAE3D2] px-3.5 py-1 rounded-full border border-[#D4AF37]/50">
+          <span>⚜️</span> TRADITIONAL THAI LACQUER ART
+        </div>
+        
+        <h2 class="text-3xl sm:text-5xl font-bold font-['Charmonman'] text-[#8B1E1E]">
+          ลายรดน้ำคืออะไร ?
+        </h2>
+
+        <div class="space-y-4 text-sm text-[#4A3B2C] leading-relaxed font-['Sarabun'] font-normal">
+          <p>
+            <strong>ลายรดน้ำ</strong> เป็นงานประณีตศิลป์ไทยชั้นสูงในหมวดช่างรัก (หนึ่งในสำนักช่างสิบหมู่) ที่ใช้เทคนิคการ <strong>ลงรัก (สมุกรัก)</strong> และ <strong>ปิดทองคำเปลว</strong> เพื่อรังสรรค์ลวดลายสีทองอร่ามบนพื้นรักสีดำสนิท มีการสร้างสรรค์สืบทอดมาตั้งแต่สมัยกรุงศรีอยุธยา กรุงธนบุรี จนถึงยุครัตนโกสินทร์
+          </p>
+          <p>
+            งานชนิดนี้นิยมใช้ตกแต่งในพุทธศาสนสถานและเครื่องใช้ชั้นสูง เช่น <strong>ตู้พระธรรม บานประตู หน้าต่างพระอุโบสถ หีบพระคัมภีร์ ฉากลับแล และเครื่องราชูปโภค</strong> โดยช่างจะผูกลวดลายอันวิจิตร อาทิ ลายกนก พันธุ์พฤกษา ดอกพุดตาน เทพนม สัตว์ป่าหิมพานต์ ตลอดจนภาพพุทธประวัติ ชาดก และรามเกียรติ์
+          </p>
+        </div>
+
+        <!-- Quote from Fine Arts Department -->
+        <blockquote class="border-l-4 border-[#D4AF37] pl-5 py-3 bg-white/90 text-xs sm:text-sm text-[#8B1E1E] italic font-['Sarabun'] rounded-r-2xl shadow-md border-y border-r border-[#D4AF37]/30">
+          “กรมศิลปากรอธิบายว่า ลายรดน้ำเกิดจากกรรมวิธีเขียนน้ำยาหรดาล ปิดทอง และรดน้ำ เมื่อล้างส่วนที่เขียนน้ำยาออก จะเหลือลวดลายทองบนพื้นรักสีดำ งานชนิดนี้พบได้มากบนตู้พระธรรม บานประตู หน้าต่าง และงานตกแต่งทางศาสนา แสดงให้เห็นว่าลายรดน้ำเป็นทั้งเครื่องประดับและสื่อถ่ายทอดสัญลักษณ์ทางวัฒนธรรม”
+        </blockquote>
+
+        <!-- Historical Stat Badges -->
+        <div class="grid grid-cols-3 gap-4 pt-2 text-center">
+          <div class="p-4 bg-white border-2 border-[#D4AF37] rounded-xl shadow-sm">
+            <div class="font-['Cinzel'] text-2xl font-bold text-[#8B1E1E]">400+</div>
+            <div class="text-xs text-[#5C4A38] font-semibold mt-1">ปีแห่งการสืบทอด</div>
+          </div>
+          <div class="p-4 bg-white border-2 border-[#D4AF37] rounded-xl shadow-sm">
+            <div class="font-['Cinzel'] text-2xl font-bold text-[#D4AF37]">100%</div>
+            <div class="text-xs text-[#5C4A38] font-semibold mt-1">ทองคำเปลวแท้</div>
+          </div>
+          <div class="p-4 bg-white border-2 border-[#D4AF37] rounded-xl shadow-sm">
+            <div class="font-['Charmonman'] text-xl font-bold text-[#1B4D3E]">ช่างสิบหมู่</div>
+            <div class="text-xs text-[#5C4A38] font-semibold mt-1">มรดกช่างหลวง</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Authentic Scripture Cabinet Photo Card -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="relative w-full max-w-md p-6 rounded-3xl bg-white border-4 border-[#D4AF37] shadow-2xl">
+          <div class="text-center pb-3 border-b-2 border-[#D4AF37]/40">
+            <span class="text-xs font-['Cinzel'] text-[#8B1E1E] font-bold tracking-widest">AYUTTHAYA HERITAGE</span>
+            <h4 class="font-['Charmonman'] text-xl font-bold text-[#3B2C1E] mt-1">ตู้พระธรรมลายรดน้ำ สมัยอยุธยา</h4>
+          </div>
+
+          <div class="py-4">
+            <div class="rounded-2xl overflow-hidden border-2 border-[#D4AF37] shadow-md relative group">
+              <img src="https://images.unsplash.com/photo-1598605272254-16f0c0ecdfa5?auto=format&fit=crop&w=800&q=80" alt="ตู้พระธรรมลายรดน้ำ" class="w-full h-72 object-cover group-hover:scale-105 transition duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+              <div class="absolute bottom-3 left-3 right-3 text-center">
+                <span class="text-xs font-['Charm'] text-[#FFD700] bg-[#8B1E1E] px-4 py-1.5 rounded-full shadow border border-[#FFD700] font-bold inline-block">
+                  ลายพันธุ์พฤกษาและสัตว์ป่าหิมพานต์ อายุราว ๓๐๐ ปี
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center text-xs text-[#5C4A38] font-['Sarabun'] font-semibold">
+            โบราณวัตถุชิ้นเอก สำนักหอสมุดแห่งชาติ กรมศิลปากร
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 4. SECTION: ขั้นตอนการทำลายรดน้ำ -->
+  <section id="process-timeline" class="py-24 px-4 bg-[#FDFBF7]/80 border-t-2 border-[#D4AF37]/30">
+    <div class="max-w-6xl mx-auto space-y-12">
+      
+      <!-- Section Header -->
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span class="text-xs font-['Cinzel'] font-bold tracking-widest text-[#1B4D3E] uppercase bg-[#EAE3D2] px-3.5 py-1 rounded-full border border-[#D4AF37]/50">
+          ✦ 6-STEP METICULOUS PROCESS ✦
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-bold font-['Charmonman'] text-[#8B1E1E]">
+          ขั้นตอนการสร้างสรรค์ลายรดน้ำ
+        </h2>
+        <p class="text-xs sm:text-sm text-[#5C4A38] font-['Sarabun'] font-medium">
+          กรรมวิธีโบราณอันแยบยลที่ต้องอาศัยสมาธิ ความแม่นยำ และทักษะช่างชั้นสูงในทุกสัมผัส
+        </p>
+      </div>
+
+      <!-- Process 6 Steps Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <div class="process-card p-6 rounded-2xl bg-white border-2 border-[#D4AF37]/60 hover:border-[#8B1E1E] transition duration-300 shadow-md space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="w-8 h-8 rounded-full bg-[#8B1E1E] text-white font-bold flex items-center justify-center text-sm font-['Cinzel']">01</span>
+            <span class="text-xs font-['Cinzel'] font-bold text-[#1B4D3E]">DESIGN</span>
+          </div>
+          <h3 class="text-lg font-bold font-['Charmonman'] text-[#8B1E1E]">ขั้นที่ ๑ : ออกแบบลวดลาย</h3>
+          <p class="text-xs text-[#5C4A38] leading-relaxed font-['Sarabun']">
+            ช่างร่างแบบลวดลายลงบนกระดาษอย่างละเอียด เช่น ลายกนก พันธุ์พฤกษา เทพนม หรือภาพเล่าเรื่องพุทธประวัติ โดยคำนึงถึงสัดส่วนและพื้นที่ของวัตถุ
+          </p>
+        </div>
+
+        <div class="process-card p-6 rounded-2xl bg-white border-2 border-[#D4AF37]/60 hover:border-[#8B1E1E] transition duration-300 shadow-md space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="w-8 h-8 rounded-full bg-[#8B1E1E] text-white font-bold flex items-center justify-center text-sm font-['Cinzel']">02</span>
+            <span class="text-xs font-['Cinzel'] font-bold text-[#1B4D3E]">PREPARATION</span>
+          </div>
+          <h3 class="text-lg font-bold font-['Charmonman'] text-[#8B1E1E]">ขั้นที่ ๒ : เตรียมและขัดพื้นรัก</h3>
+          <p class="text-xs text-[#5C4A38] leading-relaxed font-['Sarabun']">
+            ลงสมุกรักและยางรักบริสุทธิ์หลายชั้นบนพื้นผิวไม้ จากนั้นขัดด้วยถ่านกล้วยไม้หรือกากเพชรในน้ำสะอาดจนพื้นผิวเรียบเนียนสนิท ไร้ไขมันและฝุ่นผง
+          </p>
+        </div>
+
+        <div class="process-card p-6 rounded-2xl bg-white border-2 border-[#D4AF37]/60 hover:border-[#8B1E1E] transition duration-300 shadow-md space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="w-8 h-8 rounded-full bg-[#8B1E1E] text-white font-bold flex items-center justify-center text-sm font-['Cinzel']">03</span>
+            <span class="text-xs font-['Cinzel'] font-bold text-[#1B4D3E]">POUNCING</span>
+          </div>
+          <h3 class="text-lg font-bold font-['Charmonman'] text-[#8B1E1E]">ขั้นที่ ๓ : ปรุและประคบลาย</h3>
+          <p class="text-xs text-[#5C4A38] leading-relaxed font-['Sarabun']">
+            ใช้เข็มปรุตามเส้นร่างบนกระดาษแบบ แล้วทาบลงบนพื้นรัก ใช้ลูกประคบฝุ่นแป้งขาวหรือดินสอพองตบเบา ๆ เพื่อให้ฝุ่นแป้งลอดรูเข็มติดเป็นแนวลายบนพื้นดำ
+          </p>
+        </div>
+
+        <div class="process-card p-6 rounded-2xl bg-white border-2 border-[#D4AF37]/60 hover:border-[#8B1E1E] transition duration-300 shadow-md space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="w-8 h-8 rounded-full bg-[#8B1E1E] text-white font-bold flex items-center justify-center text-sm font-['Cinzel']">04</span>
+            <span class="text-xs font-['Cinzel'] font-bold text-[#1B4D3E]">HORADAN INKING</span>
+          </div>
+          <h3 class="text-lg font-bold font-['Charmonman'] text-[#8B1E1E]">ขั้นที่ ๔ : เขียนน้ำยาหรดาล</h3>
+          <p class="text-xs text-[#5C4A38] leading-relaxed font-['Sarabun']">
+            ใช้พู่กันเขียนด้วย <strong>น้ำยาหรดาล</strong> (แร่หรดาลผสมฝักส้มป่อยและยางกระถิน) ลงบน <em>ส่วนที่ไม่ต้องการให้ทองติด</em> คือการกันพื้นที่เว้นให้เป็นพื้นสีดำ
+          </p>
+        </div>
+
+        <div class="process-card p-6 rounded-2xl bg-white border-2 border-[#D4AF37]/60 hover:border-[#8B1E1E] transition duration-300 shadow-md space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="w-8 h-8 rounded-full bg-[#8B1E1E] text-white font-bold flex items-center justify-center text-sm font-['Cinzel']">05</span>
+            <span class="text-xs font-['Cinzel'] font-bold text-[#1B4D3E]">GILDING</span>
+          </div>
+          <h3 class="text-lg font-bold font-['Charmonman'] text-[#8B1E1E]">ขั้นที่ ๕ : ปิดทองคำเปลว</h3>
+          <p class="text-xs text-[#5C4A38] leading-relaxed font-['Sarabun']">
+            เช็ดรักเช็ดน้ำยาบาง ๆ จนแห้งหมาดพอดี แล้วปิดทองคำเปลวแท้ 100% ให้เต็มแผ่นทั่วพื้นที่อย่างประณีต ทองคำจะยึดเกาะเฉพาะพื้นผิวที่ไม่ได้ทาหรดาล
+          </p>
+        </div>
+
+        <div class="process-card p-6 rounded-2xl bg-[#FDF8EC] border-4 border-[#D4AF37] shadow-xl space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="w-8 h-8 rounded-full bg-[#D4AF37] text-[#3B2C1E] font-bold flex items-center justify-center text-sm font-['Cinzel']">06</span>
+            <span class="text-xs font-['Cinzel'] font-bold text-[#8B1E1E]">REVEAL (รดน้ำ)</span>
+          </div>
+          <h3 class="text-lg font-bold font-['Charmonman'] text-[#8B1E1E]">ขั้นที่ ๖ : รดน้ำและล้างลาย</h3>
+          <p class="text-xs text-[#5C4A38] leading-relaxed font-['Sarabun']">
+            นำกระดาษฟางชุบน้ำสะอาดลูบเบา ๆ น้ำยาหรดาลและทองที่ปิดทับหรดาลจะหลุดลอกออก เหลือเฉพาะ <strong>ทองคำบริสุทธิ์ติดแน่นบนพื้นรักสีดำ</strong> กลายเป็น “ลายรดน้ำ”
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Simulator -->
+      <div class="p-6 md:p-8 rounded-3xl bg-white border-2 border-[#D4AF37] text-center max-w-3xl mx-auto space-y-4 shadow-xl">
+        <h3 class="text-xl font-bold font-['Charmonman'] text-[#8B1E1E]">
+          ✨ จำลองการรดน้ำเผยลายทอง (Interactive Water Washing)
+        </h3>
+        <p class="text-xs text-[#5C4A38]">
+          คลิกปุ่มด้านล่างเพื่อจำลองการ “รดน้ำล้างหรดาล” เผยให้เห็นลวดลายทองคำสุกปลั่งบนพื้นรักสีดำ
+        </p>
+
+        <div class="relative w-full max-w-md h-48 mx-auto rounded-2xl border-4 border-[#D4AF37] overflow-hidden bg-black flex items-center justify-center shadow-inner">
+          <img src="https://images.unsplash.com/photo-1598605272254-16f0c0ecdfa5?auto=format&fit=crop&w=800&q=80" alt="Gold Pattern" class="absolute inset-0 w-full h-full object-cover">
+          <div id="simMask" class="absolute inset-0 bg-[#C2A368] transition-all duration-1000 flex items-center justify-center text-xs text-[#3B2C1E] font-bold font-['Sarabun'] shadow-lg">
+            [ ผิวทองคำเปลวปิดทับน้ำยาหรดาล ]
+          </div>
+          <div class="relative z-10 text-center space-y-1 bg-black/80 px-4 py-2 rounded-xl border border-[#D4AF37]">
+            <span class="text-2xl text-[#FFD700]">⚜️</span>
+            <div class="text-sm font-['Charm'] font-bold text-[#FFD700]">ลวดลายกนกทองคำบริสุทธิ์</div>
+            <div class="text-[9px] text-[#D4AF37] font-mono">LAI ROD NAM REVEALED</div>
+          </div>
+        </div>
+
+        <div class="flex justify-center gap-3 pt-2">
+          <button onclick="simulateWaterWash()" id="washBtn" class="btn-royal-gold px-6 py-2.5 rounded-xl text-xs font-bold text-[#3B2C1E]">
+            💦 กดรดน้ำล้างลาย
+          </button>
+          <button onclick="resetWaterWash()" class="btn-royal-red px-5 py-2.5 rounded-xl text-xs text-white">
+            🔄 เริ่มใหม่
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. SECTION: ลวดลายสำคัญ -->
+  <section id="motifs" class="py-24 px-4 max-w-7xl mx-auto border-t-2 border-[#D4AF37]/30">
+    <div class="space-y-12">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span class="text-xs font-['Cinzel'] font-bold tracking-widest text-[#1B4D3E] uppercase bg-[#EAE3D2] px-3.5 py-1 rounded-full border border-[#D4AF37]/50">
+          ✦ 6 ICONIC THAI PATTERNS ✦
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-bold font-['Charmonman'] text-[#8B1E1E]">
+          ลวดลายสำคัญในงานประณีตศิลป์ไทย
+        </h2>
+        <p class="text-xs sm:text-sm text-[#5C4A38] font-['Sarabun'] font-medium">
+          แม่ลายโบราณที่ถ่ายทอดทั้งความงามทางสุนทรียศาสตร์ ปรัชญาพุทธศาสนา และธรรมชาติ
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- Motif 1: ลายกนก -->
+        <div class="motif-card rounded-2xl bg-white border-2 border-[#D4AF37]/60 hover:border-[#8B1E1E] transition duration-300 overflow-hidden shadow-lg">
+          <div class="h-44 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1598605272254-16f0c0ecdfa5?auto=format&fit=crop&w=600&q=80" alt="ลายกนก" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-5 space-y-2">
+            <h3 class="text-lg font-bold font-['Charmonman'] text-[#8B1E1E]">๑. ลายกนก (Kanok)</h3>
+            <p class="text-xs text-[#5C4A38] leading-relaxed font-['Sarabun']">
+              ลวดลายหลักที่เป็นหัวใจของศิลปกรรมไทย มีเส้นโค้งสะบัดปลายแหลมคล้ายเปลวเพลิง แสดงถึงความเคลื่อนไหวที่อ่อนช้อย ทรงพลัง และมีชีวิตชีวา
+            </p>
+          </div>
+        </div>
+
+        <!-- Motif 2: ลายพันธุ์พฤกษา -->
+        <div class="motif-card rounded-2xl bg-white border-2 border-[#D4AF37]/60 hover:border-[#1B4D3E] transition duration-300 overflow-hidden shadow-lg">
+          <div class="h-44 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=600&q=80" alt="ลายพันธุ์พฤกษา" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-5 space-y-2">
+            <h3 class="text-lg font-bold font-['Charmonman'] text-[#1B4D3E]">๒. ลายพันธุ์พฤกษา (Flora)</h3>
+            <p class="text-xs text-[#5C4A38] leading-relaxed font-['Sarabun']">
+              แรงบันดาลใจจากเถาไม้ กิ่งก้าน ใบไม้ และดอกไม้นานาพันธุ์ ผูกร้อยประสานเป็นลวดลายเลื้อยพันอย่างมีจังหวะสมดุลรอบบานตู้และกรอบเสา
+            </p>
+          </div>
+        </div>
+
+        <!-- Motif 3: ลายดอกพุดตาน -->
+        <div class="motif-card rounded-2xl bg-white border-2 border-[#D4AF37]/60 hover:border-[#8B1E1E] transition duration-300 overflow-hidden shadow-lg">
+          <div class="h-44 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=600&q=80" alt="ลายดอกพุดตาน" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-5 space-y-2">
+            <h3 class="text-lg font-bold font-['Charmonman'] text-[#8B1E1E]">๓. ลายดอกพุดตาน (Cotton Rose)</h3>
+            <p class="text-xs text-[#5C4A38] leading-relaxed font-['Sarabun']">
+              ดอกไม้มงคลที่นิยมประดับในงานสถาปัตยกรรมและลายรดน้ำสมัยอยุธยาตอนปลายและรัตนโกสินทร์ สื่อถึงความรุ่งเรือง ความมั่งคั่ง และความเจริญงอกงาม
+            </p>
+          </div>
+        </div>
+
+        <!-- Motif 4: ลายเทพนม -->
+        <div class="motif-card rounded-2xl bg-white border-2 border-[#D4AF37]/60 hover:border-[#1B4D3E] transition duration-300 overflow-hidden shadow-lg">
+          <div class="h-44 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=600&q=80" alt="ลายเทพนม" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-5 space-y-2">
+            <h3 class="text-lg font-bold font-['Charmonman'] text-[#1B4D3E]">๔. ลายเทพนม (Thepphanom)</h3>
+            <p class="text-xs text-[#5C4A38] leading-relaxed font-['Sarabun']">
+              ภาพเทวดาประนมมือนมัสการ มักสลับอยู่ในลายกนกเปลวหรือพุ่มข้าวบิณฑ์ สื่อถึงเหล่าเทวดาผู้ร่วมอนุโมทนาในคุณงามความดีและพิทักษ์รักษาพระศาสนา
+            </p>
+          </div>
+        </div>
+
+        <!-- Motif 5: ลายสัตว์หิมพานต์ -->
+        <div class="motif-card rounded-2xl bg-white border-2 border-[#D4AF37]/60 hover:border-[#8B1E1E] transition duration-300 overflow-hidden shadow-lg">
+          <div class="h-44 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1598605272254-16f0c0ecdfa5?auto=format&fit=crop&w=600&q=80" alt="สัตว์ป่าหิมพานต์" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-5 space-y-2">
+            <h3 class="text-lg font-bold font-['Charmonman'] text-[#8B1E1E]">๕. สัตว์ป่าหิมพานต์ (Mythical Creatures)</h3>
+            <p class="text-xs text-[#5C4A38] leading-relaxed font-['Sarabun']">
+              สัตว์ในจินตนาการตามคติจักรวาลวิทยาไตรภูมิ เช่น กินรี คชสีห์ ราชสีห์ ครุฑ และนาค ผสมผสานอย่างกลมกลืนกับลายพันธุ์พฤกษา
+            </p>
+          </div>
+        </div>
+
+        <!-- Motif 6: ภาพเล่าเรื่องพุทธประวัติ -->
+        <div class="motif-card rounded-2xl bg-white border-2 border-[#D4AF37]/60 hover:border-[#1B4D3E] transition duration-300 overflow-hidden shadow-lg">
+          <div class="h-44 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=600&q=80" alt="พุทธประวัติและชาดก" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-5 space-y-2">
+            <h3 class="text-lg font-bold font-['Charmonman'] text-[#1B4D3E]">๖. ภาพเล่าเรื่องชาดก (Narratives)</h3>
+            <p class="text-xs text-[#5C4A38] leading-relaxed font-['Sarabun']">
+              การถ่ายทอดเรื่องราวทศชาติชาดก พุทธประวัติ หรือรามเกียรติ์ เพื่อเป็นสื่อการสอนธรรมะและสร้างศรัทธาแก่พุทธศาสนิกชนที่เข้ามาสักการะ
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. SECTION: สถาปัตยกรรมไทย & เครื่องลำยอง -->
+  <section id="architecture" class="py-24 px-4 bg-[#FDFBF7]/80 border-t-2 border-[#D4AF37]/30">
+    <div class="max-w-7xl mx-auto space-y-12">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span class="text-xs font-['Cinzel'] font-bold tracking-widest text-[#1B4D3E] uppercase bg-[#EAE3D2] px-3.5 py-1 rounded-full border border-[#D4AF37]/50">
+          ✦ TRADITIONAL ARCHITECTURE ✦
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-bold font-['Charmonman'] text-[#8B1E1E]">
+          สถาปัตยกรรมไทย & เครื่องลำยอง
+        </h2>
+        <p class="text-xs sm:text-sm text-[#5C4A38] font-['Sarabun'] font-medium">
+          การประสานศิลปกรรมโครงสร้างหลังคาวัดไทยอันวิจิตรตระการตา จุดบรรจบของงานไม้ งานปูน และงานประดับทอง
+        </p>
+      </div>
+
+      <!-- Architecture Interactive Component Selector -->
+      <div class="p-6 md:p-8 rounded-3xl bg-white border-2 border-[#D4AF37] shadow-xl space-y-6">
+        
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <button onclick="showArchInfo('chofa')" class="px-5 py-2.5 rounded-xl border-2 border-[#D4AF37] bg-[#8B1E1E] text-white text-xs font-bold shadow hover:bg-[#B8860B] transition">
+            ยอดช่อฟ้า
+          </button>
+          <button onclick="showArchInfo('bairaka')" class="px-5 py-2.5 rounded-xl border-2 border-[#D4AF37] bg-white text-[#3B2C1E] text-xs font-bold shadow hover:bg-[#8B1E1E] hover:text-white transition">
+            ใบระกา
+          </button>
+          <button onclick="showArchInfo('hanghong')" class="px-5 py-2.5 rounded-xl border-2 border-[#D4AF37] bg-white text-[#3B2C1E] text-xs font-bold shadow hover:bg-[#8B1E1E] hover:text-white transition">
+            หางหงส์
+          </button>
+          <button onclick="showArchInfo('gable')" class="px-5 py-2.5 rounded-xl border-2 border-[#D4AF37] bg-white text-[#3B2C1E] text-xs font-bold shadow hover:bg-[#8B1E1E] hover:text-white transition">
+            หน้าบัน
+          </button>
+          <button onclick="showArchInfo('corbel')" class="px-5 py-2.5 rounded-xl border-2 border-[#D4AF37] bg-white text-[#3B2C1E] text-xs font-bold shadow hover:bg-[#8B1E1E] hover:text-white transition">
+            คันทวย
+          </button>
+        </div>
+
+        <!-- Dynamic Architecture Display Box -->
+        <div id="archInfoDisplay" class="p-6 bg-[#FAF6EE] rounded-2xl border-2 border-[#D4AF37]/50 text-center max-w-2xl mx-auto space-y-2">
+          <h4 id="archTitle" class="text-xl font-bold font-['Charmonman'] text-[#8B1E1E]">
+            ช่อฟ้า (Chofa) - ยอดสันหลังคา
+          </h4>
+          <p id="archDesc" class="text-xs sm:text-sm text-[#5C4A38] font-['Sarabun'] leading-relaxed">
+            ประดิษฐาน ณ จุดสูงสุดของสันหลังคาอุโบสถและวิหาร เปรียบเสมือนยอดมงกุฎแห่งสถาปัตยกรรมวัดไทย ช่างโบราณนิยมแกะสลักเป็นรูปพญาครุฑยุดนาค เพื่อเป็นสัญลักษณ์แห่งการปกปักรักษาศาสนสถานอันศักดิ์สิทธิ์
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 7. SECTION: แกลเลอรีภาพถ่าย -->
+  <section id="gallery" class="py-24 px-4 max-w-7xl mx-auto border-t-2 border-[#D4AF37]/30">
+    <div class="space-y-10">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-3">
+        <span class="text-xs font-['Cinzel'] font-bold tracking-widest text-[#1B4D3E] uppercase bg-[#EAE3D2] px-3.5 py-1 rounded-full border border-[#D4AF37]/50">
+          ✦ DIGITAL ART COLLECTION ✦
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-bold font-['Charmonman'] text-[#8B1E1E]">
+          หอศิลป์ดิจิทัล (Gallery)
+        </h2>
+        <p class="text-xs sm:text-sm text-[#5C4A38] font-['Sarabun'] font-medium">
+          รวบรวมภาพลายรดน้ำชั้นครูและสถาปัตยกรรมไทย สามารถคลิกดูรายละเอียดและขยายภาพได้
+        </p>
+      </div>
+
+      <!-- Filter Category Buttons -->
+      <div class="flex flex-wrap justify-center gap-2" id="galleryFilters">
+        <button onclick="filterGallery('all')" class="gallery-filter-btn active px-5 py-2 rounded-full text-xs font-bold transition">ทั้งหมด (All)</button>
+        <button onclick="filterGallery('lacquer')" class="gallery-filter-btn px-5 py-2 rounded-full text-xs font-bold transition">ลายรดน้ำ (Lacquer)</button>
+        <button onclick="filterGallery('architecture')" class="gallery-filter-btn px-5 py-2 rounded-full text-xs font-bold transition">สถาปัตยกรรม (Architecture)</button>
+        <button onclick="filterGallery('pattern')" class="gallery-filter-btn px-5 py-2 rounded-full text-xs font-bold transition">ลวดลายไทย (Motifs)</button>
+        <button onclick="filterGallery('cabinet')" class="gallery-filter-btn px-5 py-2 rounded-full text-xs font-bold transition">ตู้พระธรรม (Cabinets)</button>
+      </div>
+
+      <!-- Gallery Grid with Real Photos -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="galleryGrid">
+        
+        <!-- Item 1: ลายรดน้ำตู้พระธรรม -->
+        <div class="gallery-item cabinet lacquer group relative rounded-2xl overflow-hidden bg-white border-2 border-[#D4AF37] hover:border-[#8B1E1E] transition duration-300 cursor-pointer shadow-xl" onclick="openGalleryModal(0)">
+          <div class="h-64 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1598605272254-16f0c0ecdfa5?auto=format&fit=crop&w=800&q=80" alt="ตู้พระธรรมลายรดน้ำ" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-5 space-y-1 bg-[#FDF8EC]">
+            <div class="text-[10px] font-['Cinzel'] font-bold text-[#8B1E1E]">SCRIPTURE CABINET</div>
+            <h4 class="text-base font-bold font-['Charmonman'] text-[#3B2C1E]">ตู้พระธรรมลายรดน้ำ ศิลปะอยุธยา</h4>
+            <p class="text-xs text-[#5C4A38]">ลวดลายพันธุ์พฤกษาและสัตว์ป่าหิมพานต์ สมัยอยุธยาตอนปลาย</p>
+          </div>
+        </div>
+
+        <!-- Item 2: สถาปัตยกรรมวัดไทย -->
+        <div class="gallery-item architecture group relative rounded-2xl overflow-hidden bg-white border-2 border-[#D4AF37] hover:border-[#1B4D3E] transition duration-300 cursor-pointer shadow-xl" onclick="openGalleryModal(1)">
+          <div class="h-64 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=800&q=80" alt="พระอุโบสถวัดไทย" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-5 space-y-1 bg-[#FDF8EC]">
+            <div class="text-[10px] font-['Cinzel'] font-bold text-[#1B4D3E]">TEMPLE PAVILION</div>
+            <h4 class="text-base font-bold font-['Charmonman'] text-[#3B2C1E]">พระอุโบสถและหลังคาเครื่องลำยอง</h4>
+            <p class="text-xs text-[#5C4A38]">โครงสร้างหลังคาซ้อนชั้น พร้อมช่อฟ้า ใบระกา และหางหงส์ทอง</p>
+          </div>
+        </div>
+
+        <!-- Item 3: ลายกนกเปลว -->
+        <div class="gallery-item pattern lacquer group relative rounded-2xl overflow-hidden bg-white border-2 border-[#D4AF37] hover:border-[#8B1E1E] transition duration-300 cursor-pointer shadow-xl" onclick="openGalleryModal(2)">
+          <div class="h-64 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=800&q=80" alt="ลายกนกเปลวเพลิงทองคำ" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-5 space-y-1 bg-[#FDF8EC]">
+            <div class="text-[10px] font-['Cinzel'] font-bold text-[#8B1E1E]">THAI MOTIF</div>
+            <h4 class="text-base font-bold font-['Charmonman'] text-[#3B2C1E]">ลายกนกเปลวเพลิงทองคำ</h4>
+            <p class="text-xs text-[#5C4A38]">แม่ลายเอกลักษณ์อันสะบัดปลายแหลมพลิ้วไหวอย่างสง่างาม</p>
+          </div>
+        </div>
+
+        <!-- Item 4: บานประตูพระอุโบสถ -->
+        <div class="gallery-item lacquer architecture group relative rounded-2xl overflow-hidden bg-white border-2 border-[#D4AF37] hover:border-[#1B4D3E] transition duration-300 cursor-pointer shadow-xl" onclick="openGalleryModal(3)">
+          <div class="h-64 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=800&q=80" alt="บานประตูพระอุโบสถ" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-5 space-y-1 bg-[#FDF8EC]">
+            <div class="text-[10px] font-['Cinzel'] font-bold text-[#1B4D3E]">TEMPLE DOOR</div>
+            <h4 class="text-base font-bold font-['Charmonman'] text-[#3B2C1E]">บานประตูลงรักปิดทองลายทวารบาล</h4>
+            <p class="text-xs text-[#5C4A38]">ภาพทวารบาลผู้พิทักษ์ศาสนสถาน ณ พระอุโบสถหลวง</p>
+          </div>
+        </div>
+
+        <!-- Item 5: หน้าบันไม้แกะสลัก -->
+        <div class="gallery-item architecture group relative rounded-2xl overflow-hidden bg-white border-2 border-[#D4AF37] hover:border-[#8B1E1E] transition duration-300 cursor-pointer shadow-xl" onclick="openGalleryModal(4)">
+          <div class="h-64 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=800&q=80" alt="หน้าบันนารายณ์ทรงสุบรรณ" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-5 space-y-1 bg-[#FDF8EC]">
+            <div class="text-[10px] font-['Cinzel'] font-bold text-[#8B1E1E]">CARVED GABLE</div>
+            <h4 class="text-base font-bold font-['Charmonman'] text-[#3B2C1E]">หน้าบันนารายณ์ทรงสุบรรณ</h4>
+            <p class="text-xs text-[#5C4A38]">งานแกะสลักไม้ปิดทองประดับกระจกสีอันวิจิตรตระการตา</p>
+          </div>
+        </div>
+
+        <!-- Item 6: หีบพระธรรมโบราณ -->
+        <div class="gallery-item cabinet lacquer group relative rounded-2xl overflow-hidden bg-white border-2 border-[#D4AF37] hover:border-[#1B4D3E] transition duration-300 cursor-pointer shadow-xl" onclick="openGalleryModal(5)">
+          <div class="h-64 overflow-hidden relative">
+            <img src="https://images.unsplash.com/photo-1598605272254-16f0c0ecdfa5?auto=format&fit=crop&w=800&q=80" alt="หีบพระธรรมลายรดน้ำ" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent"></div>
+          </div>
+          <div class="p-5 space-y-1 bg-[#FDF8EC]">
+            <div class="text-[10px] font-['Cinzel'] font-bold text-[#1B4D3E]">MANUSCRIPT CHEST</div>
+            <h4 class="text-base font-bold font-['Charmonman'] text-[#3B2C1E]">หีบพระธรรมลายรดน้ำ ๑๒ นักษัตร</h4>
+            <p class="text-xs text-[#5C4A38]">หลักฐานสำคัญทางประวัติศาสตร์และวรรณศิลป์ไทย</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 8. SECTION: แหล่งข้อมูลอ้างอิง -->
+  <section id="references" class="py-16 px-4 bg-[#F5EFEB] border-t-2 border-[#D4AF37]/30">
+    <div class="max-w-5xl mx-auto space-y-6">
+      
+      <div class="flex items-center gap-3">
+        <span class="text-2xl text-[#8B1E1E]">📚</span>
+        <h3 class="text-xl font-bold font-['Charmonman'] text-[#3B2C1E]">แหล่งข้อมูลอ้างอิงทางวิชาการ (References)</h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-[#5C4A38] font-['Sarabun'] leading-relaxed">
+        
+        <div class="p-5 rounded-2xl bg-white border-2 border-[#D4AF37]/50 space-y-1.5 shadow-sm">
+          <div class="font-bold text-[#8B1E1E]">กรมศิลปากร กระทรวงวัฒนธรรม</div>
+          <p>
+            ข้อมูลองค์ความรู้ตู้ไทยโบราณ, ลายไทย, หีบพระธรรมลายรดน้ำ และสถาปัตยกรรมวัดไทย จากสำนักหอสมุดแห่งชาติและสำนักช่างสิบหมู่
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border-2 border-[#D4AF37]/50 space-y-1.5 shadow-sm">
+          <div class="font-bold text-[#1B4D3E]">ฐานข้อมูลองค์ความรู้ช่างสิบหมู่ (Datasipmu)</div>
+          <p>
+            ขั้นตอนและกรรมวิธีการเขียนลายรดน้ำ การเตรียมรัก หรดาล และการปิดทองรดน้ำล้างลายแบบประเพณีโบราณ
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border-2 border-[#D4AF37]/50 space-y-1.5 shadow-sm">
+          <div class="font-bold text-[#8B1E1E]">สำนักวรรณกรรมและประวัติศาสตร์ กรมศิลปากร</div>
+          <p>
+            งานวิจัยเรื่อง “ลายรดน้ำกับพัฒนาการทางศิลปวัฒนธรรมไทย” และเอกสารวิชาการเครื่องลำยองสถาปัตยกรรมไทย
+          </p>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-white border-2 border-[#D4AF37]/50 space-y-1.5 shadow-sm">
+          <div class="font-bold text-[#1B4D3E]">Thailand Foundation & Wikimedia Commons</div>
+          <p>
+            ภาพประกอบและแผนผังสถาปัตยกรรมวัดไทย เผยแพร่ภายใต้สัญญาอนุญาต Creative Commons Attribution
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. FOOTER -->
+  <footer class="py-12 px-4 bg-[#3B2C1E] text-white text-center space-y-3 border-t-4 border-[#D4AF37]">
+    <div class="font-['Charmonman'] text-2xl font-bold text-[#FFD700]">
+      ศิลปะลายรดน้ำและสถาปัตยกรรมไทย
+    </div>
+    <div class="font-['Cinzel'] text-xs text-[#D5C9B8] tracking-[0.2em]">
+      THAI LACQUER ART & TRADITIONAL ARCHITECTURE
+    </div>
+    <div class="text-xs text-[#A89F91] font-['Sarabun'] pt-2">
+      จัดทำขึ้นเพื่อการศึกษา เผยแพร่องค์ความรู้ประณีตศิลป์และสถาปัตยกรรมไทยอันเป็นมรดกของชาติ
+    </div>
+  </footer>
+
+  <!-- 10. LIGHTBOX MODAL DIALOG -->
+  <div id="galleryModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white border-4 border-[#D4AF37] rounded-3xl max-w-lg w-full p-6 relative shadow-2xl space-y-4">
+      <button onclick="closeGalleryModal()" class="absolute top-4 right-4 text-[#8B1E1E] hover:text-[#3B2C1E] text-xl font-bold">✕</button>
+      
+      <div class="rounded-2xl overflow-hidden border-2 border-[#D4AF37] h-56 bg-black">
+        <img id="modalImg" src="" alt="Gallery Preview" class="w-full h-full object-cover">
+      </div>
+
+      <div class="space-y-2 text-left">
+        <div id="modalTag" class="text-xs font-['Cinzel'] font-bold text-[#8B1E1E] tracking-wider">CATEGORY</div>
+        <h3 id="modalTitle" class="text-xl font-bold font-['Charmonman'] text-[#3B2C1E]">ชื่อชิ้นงานศิลปะ</h3>
+        <p id="modalDesc" class="text-xs sm:text-sm text-[#5C4A38] leading-relaxed font-['Sarabun']">คำอธิบายรายละเอียด</p>
+      </div>
+
+      <div class="pt-2 border-t-2 border-[#D4AF37]/30 flex justify-end">
+        <button onclick="closeGalleryModal()" class="btn-royal-gold px-6 py-2 rounded-xl text-xs font-bold text-[#3B2C1E]">
+          ปิดหน้าต่าง
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Custom JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,222 @@
+/* ==========================================================================
+   ★ สไตล์ตกแต่งเว็บ: ศิลปะลายรดน้ำและสถาปัตยกรรมไทย ★
+   Thai Lacquer Art & Traditional Architecture Luxury Theme
+   ธีมไทยประเพณีหลวง: สีเนื้อนวล/เหลืองอ่อน + ทองคำเปลว + แดงชาด + เขียวมรกต
+   ========================================================================== */
+
+:root {
+  --bg-ivory: #FAF6EE;
+  --bg-cream: #FDFBF7;
+  --bg-sand: #F5EFEB;
+  --gold-primary: #D4AF37;
+  --gold-deep: #B8860B;
+  --gold-light: #FFE57F;
+  --ruby-red: #8B1E1E;
+  --ruby-deep: #5C1414;
+  --emerald-green: #1B4D3E;
+  --emerald-deep: #103329;
+  --thai-dark-brown: #3B2C1E;
+  --thai-body-text: #4A3B2C;
+}
+
+/* Base Body Styling */
+body {
+  font-family: 'Prompt', 'Sarabun', sans-serif;
+  background-color: var(--bg-ivory);
+  color: var(--thai-dark-brown);
+  background-image: 
+    radial-gradient(circle at 15% 15%, rgba(212, 175, 55, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 85% 85%, rgba(139, 30, 30, 0.05) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(27, 77, 62, 0.04) 0%, transparent 60%);
+  background-attachment: fixed;
+  overflow-x: hidden;
+}
+
+/* พื้นหลังกระดาษสา/งาช้างลายไทยวิจิตร */
+.thai-body-bg {
+  background-color: #FAF6EE;
+  background-image: 
+    radial-gradient(#D4AF37 0.75px, transparent 0.75px),
+    radial-gradient(#8B1E1E 0.5px, #FAF6EE 0.5px);
+  background-size: 36px 36px;
+  background-position: 0 0, 18px 18px;
+  background-attachment: fixed;
+}
+
+/* Custom Scrollbar - ลายทองสลับแดงชาด */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF6EE;
+  border-left: 1px solid rgba(212, 175, 55, 0.3);
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #D4AF37, #8B1E1E);
+  border-radius: 6px;
+  border: 2px solid #FAF6EE;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #FFE57F, #D4AF37, #8B1E1E);
+}
+
+/* ข้อความตัวหนังสือสีทองคำแท้ (Thai Royal Gold Gradient) */
+.thai-gold-text {
+  background: linear-gradient(180deg, #FFE894 0%, #D4AF37 40%, #B8860B 75%, #8A6405 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(1px 2px 3px rgba(184, 134, 11, 0.3));
+}
+
+/* ข้อความตัวหนังสือสีแดงชาดหลวง (Thai Royal Ruby Gradient) */
+.thai-ruby-text {
+  background: linear-gradient(180deg, #B91C1C 0%, #8B1E1E 50%, #5C1414 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(139, 30, 30, 0.25));
+}
+
+/* การ์ดสไตล์กระดาษข่อย/งาช้างหลวง (Parchment Card) */
+.parchment-card {
+  background: rgba(255, 253, 248, 0.94);
+  border: 1.5px solid rgba(212, 175, 55, 0.5);
+  box-shadow: 0 8px 24px rgba(184, 134, 11, 0.1), 0 2px 6px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.parchment-card:hover {
+  border-color: rgba(212, 175, 55, 0.85);
+  box-shadow: 0 12px 32px rgba(212, 175, 55, 0.2), 0 4px 10px rgba(139, 30, 30, 0.08);
+}
+
+/* ปุ่มสีทองหลวง (Royal Gold Button) */
+.btn-royal-gold {
+  background: linear-gradient(180deg, #FFF1A8 0%, #D4AF37 50%, #B8860B 100%);
+  color: #3B2C1E;
+  border: 1.5px solid #FFFFFF;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  font-weight: 700;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.btn-royal-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.55);
+  background: linear-gradient(180deg, #FFF7C2 0%, #E5BE4A 50%, #C99518 100%);
+}
+
+/* ปุ่มสีแดงชาดหลวง (Royal Red Button) */
+.btn-royal-red {
+  background: linear-gradient(180deg, #A82C2C 0%, #8B1E1E 50%, #661313 100%);
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 14px rgba(139, 30, 30, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  font-weight: 700;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.btn-royal-red:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 30, 30, 0.45);
+  background: linear-gradient(180deg, #BF3838 0%, #9E2424 50%, #7A1919 100%);
+}
+
+/* ปุ่มสีเขียวมรกต (Royal Emerald Green Button) */
+.btn-royal-green {
+  background: linear-gradient(180deg, #2A6E59 0%, #1B4D3E 50%, #103329 100%);
+  color: #FFFFFF;
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 14px rgba(27, 77, 62, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  font-weight: 700;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+.btn-royal-green:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(27, 77, 62, 0.45);
+  background: linear-gradient(180deg, #35856D 0%, #235F4D 50%, #164235 100%);
+}
+
+/* แถบเมนูด้านบน */
+.nav-link {
+  position: relative;
+  transition: color 0.25s ease;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2.5px;
+  background: #8B1E1E;
+  border-radius: 2px;
+  transition: width 0.25s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* การ์ดและแกลเลอรี */
+.process-card, .motif-card, .gallery-item {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.process-card:hover, .motif-card:hover, .gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 28px rgba(212, 175, 55, 0.22);
+}
+
+/* ปุ่มตัวกรองหมวดหมู่แกลเลอรี */
+.gallery-filter-btn {
+  background: #FAF6EE;
+  color: #3B2C1E;
+  border: 2px solid #D4AF37;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+.gallery-filter-btn:hover {
+  background: #8B1E1E;
+  color: #FFFFFF;
+  border-color: #8B1E1E;
+}
+.gallery-filter-btn.active {
+  background: #8B1E1E;
+  color: #FFFFFF;
+  border-color: #8B1E1E;
+  box-shadow: 0 3px 10px rgba(139, 30, 30, 0.35);
+}
+
+/* เส้นคั่นลายไทย */
+.thai-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 16px 0;
+}
+.thai-divider::before,
+.thai-divider::after {
+  content: "";
+  flex: 1;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+}
+
+/* การจำลองการรดน้ำล้างลาย */
+.water-wash-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 3px solid #D4AF37;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* แอนิเมชันเปิดหน้า Fade In */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.35s ease-out forwards;
+}
