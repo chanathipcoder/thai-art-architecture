@@ -1,179 +1,253 @@
-/* ==========================================================================
-   ★ สคริปต์การทำงาน: ศิลปะลายรดน้ำและสถาปัตยกรรมไทย ★
-   Thai Lacquer Art & Traditional Architecture Main JavaScript
-   ========================================================================== */
+/* =====================================
+   Thai Lacquer Art & Architecture
+   Menu · Water Wash · Architecture Tabs
+   ===================================== */
 
-// 1. Mobile Menu Toggle
-function toggleMobileMenu() {
-  const menu = document.getElementById('mobileMenu');
-  if (menu) {
-    menu.classList.toggle('hidden');
+"use strict";
+
+document.addEventListener("DOMContentLoaded", () => {
+  setupMobileMenu();
+  setupWaterWash();
+  setupArchitectureTabs();
+  setupImageFallbacks();
+});
+
+/* 1. เมนูมือถือ */
+function setupMobileMenu() {
+  const toggle = document.getElementById("menuToggle");
+  const menu = document.getElementById("mainMenu");
+
+  if (!toggle || !menu) return;
+
+  function setMenuOpen(open) {
+    menu.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute(
+      "aria-label",
+      open ? "ปิดเมนู" : "เปิดเมนู"
+    );
   }
+
+  toggle.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "true";
+    setMenuOpen(!open);
+  });
+
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      setMenuOpen(false);
+    });
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (
+      event.key === "Escape" &&
+      toggle.getAttribute("aria-expanded") === "true"
+    ) {
+      setMenuOpen(false);
+      toggle.focus();
+    }
+  });
+
+  document.addEventListener("click", (event) => {
+    if (
+      toggle.getAttribute("aria-expanded") === "true" &&
+      !menu.contains(event.target) &&
+      !toggle.contains(event.target)
+    ) {
+      setMenuOpen(false);
+    }
+  });
+
+  const desktop = window.matchMedia("(min-width: 901px)");
+
+  desktop.addEventListener("change", (event) => {
+    if (event.matches) setMenuOpen(false);
+  });
 }
 
-// 2. Interactive Water Washing Simulator (จำลองการรดน้ำล้างลาย)
-function simulateWaterWash() {
-  const mask = document.getElementById('simMask');
-  const btn = document.getElementById('washBtn');
-  if (mask && btn) {
-    btn.disabled = true;
-    btn.innerText = '💦 กำลังรดน้ำล้างหรดาล...';
-    btn.classList.add('opacity-50');
-    
-    mask.style.opacity = '0';
-    mask.style.transform = 'scale(1.1)';
-    mask.style.pointerEvents = 'none';
+/* 2. ตัวจำลองรดน้ำเผยลาย */
+function setupWaterWash() {
+  const washButton = document.getElementById("washBtn");
+  const resetButton = document.getElementById("resetBtn");
+  const mask = document.getElementById("simMask");
+  const status = document.getElementById("washStatus");
 
-    setTimeout(() => {
-      btn.innerText = '✨ เผยลายทองคำสำเร็จ!';
-      btn.classList.remove('opacity-50');
-    }, 1000);
-  }
+  if (!washButton || !resetButton || !mask || !status) return;
+
+  const stage = mask.closest(".wash-stage");
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+
+  let washTimer = null;
+
+  washButton.addEventListener("click", () => {
+    window.clearTimeout(washTimer);
+
+    washButton.disabled = true;
+    washButton.textContent = "กำลังเผยลาย…";
+    status.textContent = "กำลังจำลองการล้างน้ำยาออก";
+    stage.classList.add("is-washed");
+
+    const duration = reducedMotion.matches ? 0 : 1200;
+
+    washTimer = window.setTimeout(() => {
+      washButton.textContent = "เผยลายทองแล้ว";
+      status.textContent = "เผยลายทองสำเร็จ กดเริ่มใหม่เพื่อดูอีกครั้ง";
+      washTimer = null;
+    }, duration);
+  });
+
+  resetButton.addEventListener("click", () => {
+    window.clearTimeout(washTimer);
+    washTimer = null;
+
+    stage.classList.remove("is-washed");
+    washButton.disabled = false;
+    washButton.textContent = "รดน้ำเผยลาย";
+    status.textContent = "พร้อมเริ่มจำลอง";
+  });
 }
 
-function resetWaterWash() {
-  const mask = document.getElementById('simMask');
-  const btn = document.getElementById('washBtn');
-  if (mask && btn) {
-    mask.style.opacity = '1';
-    mask.style.transform = 'scale(1)';
-    mask.style.pointerEvents = 'auto';
-    btn.disabled = false;
-    btn.innerText = '💦 กดรดน้ำล้างลาย';
-    btn.classList.remove('opacity-50');
-  }
-}
-
-// 3. Interactive Architecture Diagram Tabs
-const archData = {
+/* 3. ข้อมูลสถาปัตยกรรม */
+const architectureData = {
   chofa: {
-    title: 'ช่อฟ้า (Chofa) - ยอดสันหลังคา',
-    desc: 'ประดิษฐาน ณ จุดสูงสุดของสันหลังคาอุโบสถและวิหาร เปรียบเสมือนยอดมงกุฎแห่งสถาปัตยกรรมวัดไทย ช่างโบราณนิยมแกะสลักเป็นรูปพญาครุฑยุดนาค เพื่อเป็นสัญลักษณ์แห่งการปกปักรักษาศาสนสถานอันศักดิ์สิทธิ์'
+    title: "ช่อฟ้า / Chofa",
+    position: "หมายเลข 1 ในแผนภาพ",
+    description:
+      "ส่วนยอดที่ปลายสันหลังคา รูปทรงแตกต่างกันตามแบบและสกุลช่าง " +
+      "ไม่ใช่ทุกช่อฟ้าที่ทำเป็นครุฑยุดนาค"
   },
+
   bairaka: {
-    title: 'ใบระกา (Bai Raka) - ลายประดับแนวลาดหลังคา',
-    desc: 'ชิ้นส่วนลายกนกที่เรียงต่อกันเป็นจังหวะตามแนวลาดของหลังคา เปรียบเสมือนครีบหรือเกล็ดอันวิจิตรของพญานาคที่ทอดตัวลงมาจากยอดช่อฟ้า ช่วยเสริมให้หลังคาดูมีมิติและพริ้วไหว'
+    title: "ใบระกา / Bai Raka",
+    position: "หมายเลข 2 ในแผนภาพ",
+    description:
+      "องค์ประกอบที่เรียงตามแนวลาดของเครื่องลำยอง " +
+      "สร้างจังหวะต่อเนื่องตามเส้นกรอบหลังคา " +
+      "และช่วยเน้นความละเอียดของงานตกแต่ง"
   },
+
   hanghong: {
-    title: 'หางหงส์ (Hang Hong) - ส่วนปลายล่างสุดของเครื่องลำยอง',
-    desc: 'ส่วนปลายล่างสุดของกรอบหลังคาที่เชิดงอนขึ้นอย่างอ่อนช้อย มักทำเป็นรูปเศียรพญานาค ๓ เศียร หรือ ๕ เศียร ช่วยเชื่อมต่อสายตาจากแนวหลังคาลงสู่โครงสร้างเสาอาคารได้อย่างสมบูรณ์แบบ'
+    title: "หางหงส์ / Hang Hong",
+    position: "หมายเลข 6 ในแผนภาพ",
+    description:
+      "ส่วนปลายล่างของเครื่องลำยองที่เชิดขึ้น " +
+      "มีรูปแบบแตกต่างกันตามงานช่าง " +
+      "บางแบบทำเป็นรูปนาค โดยจำนวนเศียรไม่ได้เหมือนกันทุกอาคาร"
   },
+
   gable: {
-    title: 'หน้าบัน (Gable / Pediment) - ศูนย์รวมประณีตศิลป์',
-    desc: 'พื้นที่สามเหลี่ยมด้านหน้าและหลังอาคาร มักแกะสลักไม้ลายกระหนก ลงรักปิดทอง ประดับกระจกสี เล่าเรื่องราวนารายณ์ทรงสุบรรณ พระอินทร์ทรงช้างเอราวัณ หรือพุทธชาดก เชื่อมโยงกับศิลปะลายรดน้ำ'
-  },
-  corbel: {
-    title: 'คันทวย (Corbels) - ไม้ค้ำยันหลังคาวิจิตร',
-    desc: 'โครงสร้างไม้ค้ำยันที่ยื่นออกจากเสาหรือผนังเพื่อรองรับชายคา มักฉลุหรือแกะสลักเป็นรูปพญานาค ลายกนก หรือหนุมาน ช่วยเพิ่มความสง่างามและความมั่นคงแก่อาคาร'
+    title: "หน้าบัน / Gable",
+    position: "พื้นที่สามเหลี่ยมใต้กรอบหลังคา",
+    description:
+      "พื้นที่ด้านหน้าและด้านหลังใต้กรอบหลังคา " +
+      "มักตกแต่งด้วยงานแกะสลัก ลงรักปิดทอง หรือประดับกระจก " +
+      "เทคนิคเหล่านี้ต้องแยกจากลายรดน้ำ"
   }
 };
 
-function showArchInfo(elementKey) {
-  const titleEl = document.getElementById('archTitle');
-  const descEl = document.getElementById('archDesc');
-  const displayBox = document.getElementById('archInfoDisplay');
+/* 4. แท็บสถาปัตยกรรม */
+function setupArchitectureTabs() {
+  const tabs = Array.from(
+    document.querySelectorAll("[data-arch]")
+  );
 
-  if (archData[elementKey] && titleEl && descEl) {
-    titleEl.innerText = archData[elementKey].title;
-    descEl.innerText = archData[elementKey].desc;
-    
-    displayBox.classList.remove('animate-fadeIn');
-    void displayBox.offsetWidth;
-    displayBox.classList.add('animate-fadeIn');
+  const panel = document.getElementById("archPanel");
+  const title = document.getElementById("archTitle");
+  const position = document.getElementById("archPosition");
+  const description = document.getElementById("archDesc");
+
+  if (
+    !tabs.length ||
+    !panel ||
+    !title ||
+    !position ||
+    !description
+  ) {
+    return;
   }
-}
 
-// 4. Filterable Gallery
-function filterGallery(category) {
-  const items = document.querySelectorAll('.gallery-item');
-  const buttons = document.querySelectorAll('.gallery-filter-btn');
+  function selectTab(key, moveFocus = false) {
+    const data = architectureData[key];
+    if (!data) return;
 
-  buttons.forEach(btn => {
-    btn.classList.remove('active');
-    if (btn.getAttribute('onclick').includes(category)) {
-      btn.classList.add('active');
-    }
-  });
+    title.textContent = data.title;
+    position.textContent = data.position;
+    description.textContent = data.description;
 
-  items.forEach(item => {
-    if (category === 'all') {
-      item.style.display = 'block';
-    } else {
-      if (item.classList.contains(category)) {
-        item.style.display = 'block';
-      } else {
-        item.style.display = 'none';
+    tabs.forEach((tab) => {
+      const selected = tab.dataset.arch === key;
+
+      tab.setAttribute("aria-selected", String(selected));
+      tab.tabIndex = selected ? 0 : -1;
+
+      if (selected) {
+        panel.setAttribute("aria-labelledby", tab.id);
+
+        if (moveFocus) {
+          tab.focus();
+        }
       }
+    });
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => {
+      selectTab(tab.dataset.arch);
+    });
+
+    tab.addEventListener("keydown", (event) => {
+      let nextIndex;
+
+      switch (event.key) {
+        case "ArrowRight":
+          nextIndex = (index + 1) % tabs.length;
+          break;
+
+        case "ArrowLeft":
+          nextIndex = (index - 1 + tabs.length) % tabs.length;
+          break;
+
+        case "Home":
+          nextIndex = 0;
+          break;
+
+        case "End":
+          nextIndex = tabs.length - 1;
+          break;
+
+        default:
+          return;
+      }
+
+      event.preventDefault();
+      selectTab(tabs[nextIndex].dataset.arch, true);
+    });
+  });
+
+  selectTab("chofa");
+}
+
+/* 5. แสดงข้อความเมื่อโหลดภาพไม่ได้ */
+function setupImageFallbacks() {
+  document.querySelectorAll("img").forEach((image) => {
+    function showFallback() {
+      if (!image.isConnected) return;
+
+      const fallback = document.createElement("div");
+      fallback.className = "image-error";
+      fallback.textContent =
+        "ไม่สามารถโหลดภาพ: " + (image.alt || "ภาพประกอบ");
+
+      image.replaceWith(fallback);
+    }
+
+    image.addEventListener("error", showFallback, { once: true });
+
+    if (image.complete && image.naturalWidth === 0) {
+      showFallback();
     }
   });
 }
-
-// 5. Gallery Modal Details with Images
-const galleryData = [
-  {
-    img: 'https://images.unsplash.com/photo-1598605272254-16f0c0ecdfa5?auto=format&fit=crop&w=800&q=80',
-    tag: 'SCRIPTURE CABINET • สมัยอยุธยา',
-    title: 'ตู้พระธรรมลายรดน้ำ ศิลปะอยุธยาตอนปลาย',
-    desc: 'ตู้พระธรรมไม้ลงรักปิดทองลายรดน้ำ ตกแต่งด้วยลายพันธุ์พฤกษาและภาพสัตว์หิมพานต์ จัดแสดง ณ สำนักหอสมุดแห่งชาติ กรมศิลปากร สะท้อนความรุ่งเรืองของประณีตศิลป์ไทยในอดีต'
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=800&q=80',
-    tag: 'ARCHITECTURE • สถาปัตยกรรมวัดไทย',
-    title: 'พระอุโบสถและหลังคาเครื่องลำยอง',
-    desc: 'สถาปัตยกรรมพระอุโบสถทรงไทยประเพณี โครงสร้างหลังคาซ้อน ๓ ชั้น มุงกระเบื้องเคลือบสี พร้อมเครื่องลำยอง ช่อฟ้า ใบระกา และหางหงส์สีทองอร่ามตัดกับท้องฟ้า'
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=800&q=80',
-    tag: 'THAI MOTIF • แม่ลายกนก',
-    title: 'ลายกนกเปลวเพลิงทองคำแท้',
-    desc: 'แม่ลายกนก ๓ ตัว (กนกสามตัว) ที่ผูกลายอย่างมีจังหวะ เส้นสายสะบัดพริ้วไหวคล้ายเปลวไฟ เขียนด้วยน้ำยาหรดาลและปิดทองคำเปลวบริสุทธิ์ 100%'
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1596422846543-75c6fc197f07?auto=format&fit=crop&w=800&q=80',
-    tag: 'TEMPLE DOOR • บานประตูพระอุโบสถ',
-    title: 'บานประตูลงรักปิดทองลายทวารบาล',
-    desc: 'ภาพทวารบาลหรือเทพยดาผู้พิทักษ์รักษาพระศาสนา สถิต ณ บานประตูพระอุโบสถหลวง รังสรรค์ด้วยเทคนิคลายรดน้ำที่มีความละเอียดอ่อนในทุกรายละเอียดของเครื่องทรง'
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1528181304800-259b08848526?auto=format&fit=crop&w=800&q=80',
-    tag: 'CARVED GABLE • หน้าบันวิจิตร',
-    title: 'หน้าบันนารายณ์ทรงสุบรรณประดับกระจก',
-    desc: 'งานแกะสลักไม้รูปพระนารายณ์ทรงครุฑยุดนาค ลงรักปิดทองคำเปลวและประดับกระจกสีเกรียบ สัญลักษณ์แห่งองค์พระมหากษัตริย์และพระพุทธศาสนา'
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1598605272254-16f0c0ecdfa5?auto=format&fit=crop&w=800&q=80',
-    tag: 'MANUSCRIPT CHEST • หีบพระธรรมโบราณ',
-    title: 'หีบพระธรรมลายรดน้ำ ๑๒ นักษัตร',
-    desc: 'หีบสำหรับบรรจุพระคัมภีร์ใบลานสมัยอยุธยา อายุราว ๓๐๐–๔๐๐ ปี ตกแต่งลายพันธุ์พฤกษาล้อมรอบรูปสัตว์ประจำปีนักษัตรตามคติความเชื่อโบราณ'
-  }
-];
-
-function openGalleryModal(index) {
-  const item = galleryData[index];
-  if (!item) return;
-
-  const modalImg = document.getElementById('modalImg');
-  if (modalImg) {
-    modalImg.src = item.img;
-  }
-  document.getElementById('modalTag').innerText = item.tag;
-  document.getElementById('modalTitle').innerText = item.title;
-  document.getElementById('modalDesc').innerText = item.desc;
-
-  const modal = document.getElementById('galleryModal');
-  modal.classList.remove('hidden');
-  modal.classList.add('flex');
-}
-
-function closeGalleryModal() {
-  const modal = document.getElementById('galleryModal');
-  modal.classList.remove('flex');
-  modal.classList.add('hidden');
-}
-
-window.addEventListener('click', (e) => {
-  const modal = document.getElementById('galleryModal');
-  if (e.target === modal) {
-    closeGalleryModal();
-  }
-});
